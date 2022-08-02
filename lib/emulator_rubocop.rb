@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "emulator_rubocop/version"
+require_relative "modules/version"
 
-module EmulatorRubocop
+class EmulatorRubocop
   class Error < StandardError; end
   # Your code goes here...
 end
