@@ -6,6 +6,10 @@ require_relative "modules/errors"
 class EmulatorRubocop
   include Modules
 
+  def self.call(args)
+    new(args).call
+  end
+
   def initialize(args)
     @args = args
     @arr_of_files_path = check_file_path?(args[0]) || Dir['./app/*.rb'] + Dir['./web/*.rb']

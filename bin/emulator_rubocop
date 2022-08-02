@@ -3,4 +3,4 @@
 
 require 'emulator_rubocop'
 
-EmulatorRubocop.new(ARGV).call
+EmulatorRubocop.call(ARGV)

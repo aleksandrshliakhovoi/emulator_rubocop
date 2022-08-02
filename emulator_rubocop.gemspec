@@ -17,10 +17,11 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/aleksandrshliakhovoi/emulator_rubocop"
   spec.metadata["changelog_uri"] = "https://github.com/aleksandrshliakhovoi/emulator_rubocop"
   spec.files = Dir.glob("{lib,bin}/**/*")
+  spec.bindir        = ["bin"]
   spec.executables = ["emulator_rubocop"]
   spec.require_paths = ["lib"]
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "bundler", "~> 1.15"
+  spec.add_dependency "bundler", "~> 2.2.25"
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
 end
