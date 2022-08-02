@@ -46,6 +46,10 @@ emulator_rubocop/README.md
 pictures
 pictures/check_from_folders.png
 
+Another way to specify needed cops by yaml file, create in root directory file .rubocop_emulator.yml example:
+
+![screen5](img/yaml_file.png)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

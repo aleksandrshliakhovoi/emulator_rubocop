@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "modules/version"
+require_relative "modules/yaml_parser"
 require_relative "modules/errors"
 
 class EmulatorRubocop
@@ -56,8 +57,16 @@ class EmulatorRubocop
   def show_errors
     if specific_cop
       puts "#{founded_errors[specific_cop.to_sym]} found #{specific_cop}"
+    elsif cops_from_yaml
+      cops_from_yaml.each do |cop|
+        puts "#{founded_errors[cop.to_sym]} found #{cop}" if founded_errors.include?(cop.to_sym)
+      end
     else
       founded_errors.each { |key, value| puts "#{value} found #{key}" }
     end
+  end
+
+  def cops_from_yaml
+    Modules::YamlParser.configuration
   end
 end
