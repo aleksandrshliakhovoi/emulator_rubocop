@@ -1,10 +1,14 @@
 # frozen_string_literal: true
+
 require 'yaml'
 
 class YamlParser
+  ENABLE = 'enable'
+  CONFIG_FILE = '.rubocop_emulator.yml'
+
   class << self
     def configuration
-      cops_name_array
+      cops_names
     rescue Errno::ENOENT
       nil
     end
@@ -12,13 +16,13 @@ class YamlParser
     private
 
     def raw_cops
-      YAML.safe_load(File.read('.rubocop_emulator.yml'))['all_cops']
+      YAML.safe_load(File.read(CONFIG_FILE))['all_cops']
     end
 
-    def cops_name_array
-      raw_cops.find_all { |_, value| value == 'enable' }
+    def cops_names
+      raw_cops.find_all { |_, value| value == ENABLE }
               .flatten
-              .delete_if { |el| el == 'enable' }
+              .delete_if { |element| element == ENABLE }
     end
   end
 end

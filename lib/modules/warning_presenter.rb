@@ -3,7 +3,7 @@
 require_relative 'yaml_parser'
 
 module Modules
-  class WarningShower
+  class WarningPresenter
     def initialize(founded_warnings, specific_cop)
       @founded_warnings = founded_warnings
       @specific_cop = specific_cop
@@ -19,16 +19,18 @@ module Modules
           output_warnings(founded_warnings[cop.to_sym], cop)
         end
       else
-        founded_warnings.each { |key, el| output_warnings(el, key) }
+        founded_warnings.each { |key, element| output_warnings(element, key) }
       end
     end
+
+    private
 
     def cops_from_yaml
       YamlParser.configuration
     end
 
-    def output_warnings(arr, cop)
-      arr.each { |warning| puts "#{warning} found #{cop}" }
+    def output_warnings(warnings, cop)
+      warnings.each { |warning| puts "#{warning} found #{cop}" }
     end
   end
 end

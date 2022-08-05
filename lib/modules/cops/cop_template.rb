@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Cops
   class CopTemplate
     def initialize(file_path, index, warning)
@@ -8,12 +9,14 @@ module Cops
     end
 
     def call
-      warning_message(@file_path, @index, @warning)
+      warning_message
     end
 
     private
 
-    def warning_message(file_path, index, warning)
+    attr_reader :file_path, :index, :warning
+
+    def warning_message
       "#{file_path}:#{index + 1}: #{warning}:"
     end
   end
